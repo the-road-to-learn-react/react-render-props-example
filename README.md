@@ -1,6 +1,6 @@
 # react-render-props-example
 
-[![Build Status](https://travis-ci.org/the-road-to-learn-react/react-render-props-example.svg?branch=master)](https://travis-ci.org/the-road-to-learn-react/react-render-props-example)
+[![Build Status](https://travis-ci.org/the-road-to-learn-react/react-render-props-example.svg?branch=master)](https://travis-ci.org/the-road-to-learn-react/react-render-props-example) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/)
 
 ## Installation
 
