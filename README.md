@@ -1,6 +1,6 @@
 # react-render-props-example
 
-[![Build Status](https://travis-ci.org/the-road-to-learn-react/react-render-props-example.svg?branch=master)](https://travis-ci.org/the-road-to-learn-react/react-render-props-example) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/)
+[![Build Status](https://travis-ci.org/the-road-to-learn-react/react-render-props-example.svg?branch=master)](https://travis-ci.org/the-road-to-learn-react/react-render-props-example) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/) [![Greenkeeper badge](https://badges.greenkeeper.io/the-road-to-learn-react/react-render-props-example.svg)](https://greenkeeper.io/)
 
 Showcasing how render prop components can be used for a list component with a sorting functionality. [Read more about it.](https://www.robinwieruch.de/react-render-props-pattern/)
 
