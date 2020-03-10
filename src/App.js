@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from 'react';
+import React from "react";
 
 const LIST = [
-  { id: '1', title: '123' },
-  { id: '2', title: '2' },
-  { id: '3', title: '33' },
-  { id: '4', title: 'bar 1' },
-  { id: '5', title: 'bar 2' },
-  { id: '6', title: 'bar 3' },
+  { id: "1", title: "123" },
+  { id: "2", title: "2" },
+  { id: "3", title: "33" },
+  { id: "4", title: "bar 1" },
+  { id: "5", title: "bar 2" },
+  { id: "6", title: "bar 3" }
 ];
 
 const App = () => (
   <div>
     <AdvancedList list={LIST}>
-      {list => <List list={list} />}
+      {manipulatedList => <List list={manipulatedList} />}
     </AdvancedList>
   </div>
 );
@@ -20,54 +20,41 @@ const App = () => (
 const isIncluded = query => item =>
   item.title.toLowerCase().includes(query.toLowerCase());
 
+const AdvancedList = ({ list, children }) => {
+  const [filterQuery, setFilterQuery] = React.useState("");
+  const [sort, setSort] = React.useState("ASC");
 
-class AdvancedList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      filterQuery: '',
-      sort: 'ASC',
-    };
-  }
-
-  onFilterQueryChange = event => {
-    this.setState({ filterQuery: event.target.value });
+  const handleFilterQueryChange = event => {
+    setFilterQuery(event.target.value);
   };
 
-  onSortChange = event => {
-    this.setState({ sort: event.target.value });
+  const handleSortChange = event => {
+    setSort(event.target.value);
   };
 
-  render() {
-    const { list, children } = this.props;
-    const { filterQuery, sort } = this.state;
+  let derivedList = list.filter(isIncluded(filterQuery));
 
-    let derivedList = list.filter(isIncluded(filterQuery));
+  derivedList =
+    sort === "ASC" ? derivedList.sort() : derivedList.sort().reverse();
 
-    derivedList = sort === 'ASC'
-      ? derivedList.sort()
-      : derivedList.sort().reverse();
+  return (
+    <section>
+      <aside>
+        <input
+          type="text"
+          value={filterQuery}
+          onChange={handleFilterQueryChange}
+        />
 
-    return (
-      <section>
-        <aside>
-          <input
-            type="text"
-            value={filterQuery}
-            onChange={this.onFilterQueryChange}
-          />
+        <Sort value={sort} onChange={handleSortChange} />
+      </aside>
 
-          <Sort value={sort} onChange={this.onSortChange} />
-        </aside>
-
-        <table>
-          <tbody>{children(derivedList)}</tbody>
-        </table>
-      </section>
-    );
-  }
-}
+      <table>
+        <tbody>{children(derivedList)}</tbody>
+      </table>
+    </section>
+  );
+};
 
 const List = ({ list }) =>
   list.map(item => (
@@ -77,12 +64,12 @@ const List = ({ list }) =>
   ));
 
 const Sort = ({ value, onChange }) => (
-  <Fragment>
+  <>
     <label>
       <input
         type="radio"
         value="ASC"
-        checked={value === 'ASC'}
+        checked={value === "ASC"}
         onChange={onChange}
       />
       ASC
@@ -91,12 +78,12 @@ const Sort = ({ value, onChange }) => (
       <input
         type="radio"
         value="DESC"
-        checked={value === 'DESC'}
+        checked={value === "DESC"}
         onChange={onChange}
       />
       DESC
     </label>
-  </Fragment>
+  </>
 );
 
 export default App;
